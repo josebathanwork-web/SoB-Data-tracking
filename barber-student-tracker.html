@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>School of Barbers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=EB+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f4f2;--surface:#fff;--text:#0a0a0a;--muted:#5f5f5f;--line:#deded9;--accent:#c8102e;--blue:#c8102e;--btn:#c8102e;--good:#1f7a4d;--goodbg:#dff3e7;--warn:#9a5b00;--warnbg:#fdecc8;--bad:#a4161a;--badbg:#fbdcdc;--chip:#ece9e1;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0a0a;--surface:#161616;--text:#f4f4f2;--muted:#a3a3a0;--line:#2b2b2b;--accent:#ff5a70;--blue:#ff5a70;--btn:#c8102e;--good:#6fd5a0;--goodbg:#14382a;--warn:#f3c26b;--warnbg:#3d2f10;--bad:#ff9a9d;--badbg:#431a1c;--chip:#242321;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a0a0a;--surface:#161616;--text:#f4f4f2;--muted:#a3a3a0;--line:#2b2b2b;--accent:#ff5a70;--blue:#ff5a70;--btn:#c8102e;--good:#6fd5a0;--goodbg:#14382a;--warn:#f3c26b;--warnbg:#3d2f10;--bad:#ff9a9d;--badbg:#431a1c;--chip:#242321;color-scheme:dark}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 Outfit,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.strip{background:#c8102e;color:#fff;font:600 .72rem Outfit,sans-serif;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:8px 12px}
+.band{background:#0a0a0a;color:#fff;border-bottom:1px solid #2b2b2b}
+.band .sub{color:#b5b5b2}
+.brand{font:600 .78rem Outfit,sans-serif;letter-spacing:.2em;text-transform:uppercase;margin:0 0 14px}
+h1 em{font:italic 500 1.1em "EB Garamond",Georgia,serif;color:#ff3b57}
+header{max-width:1100px;margin:0 auto;padding:22px 16px 20px}
+h1{font:700 2.4rem/1.1 Outfit,system-ui,sans-serif;margin:0;letter-spacing:-.01em}
+h2{font:700 1.2rem/1.2 Outfit,system-ui,sans-serif;margin:0 0 8px}
+.sub{color:var(--muted);margin:4px 0 0}
+nav{max-width:1100px;margin:0 auto;padding:8px 16px;display:flex;gap:6px;overflow-x:auto}
+nav button{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--text);padding:8px 14px;border-radius:3px;font:500 .9rem Outfit,sans-serif;cursor:pointer}
+nav button[aria-selected="true"]{background:var(--btn);border-color:var(--btn);color:#fff}
+main{max-width:1100px;margin:0 auto;padding:8px 16px 40px}
+button,input,select,textarea{font:inherit;color:inherit}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.btn{border:1px solid var(--line);background:var(--surface);padding:8px 14px;border-radius:3px;cursor:pointer;font-weight:600}
+.btn.pri{background:var(--btn);border-color:var(--btn);color:#fff}
+.btn.sm{padding:3px 8px;font-size:.85rem}
+.btn.danger{background:#a4161a;border-color:#a4161a;color:#fff}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:8px 0 16px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.stat b{display:block;font:700 1.9rem/1.1 Outfit,system-ui,sans-serif;color:var(--accent)}
+.stat span{color:var(--muted);font-size:.9rem}
+.bar{height:6px;background:var(--chip);border-radius:3px;margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--good)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:14px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+.wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px;max-width:100%}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:center;white-space:nowrap}
+th{font-weight:600;background:var(--chip);font-size:.85rem;vertical-align:bottom}
+th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--surface);z-index:1;min-width:140px}
+th:first-child{background:var(--chip)}
+tr:last-child td{border-bottom:0}
+input[type=checkbox]{width:22px;height:22px;accent-color:var(--good);cursor:pointer}
+input[type=text],input[type=date],input[type=email],select,textarea{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;max-width:100%}
+textarea{width:100%;min-height:110px}
+.cell{width:38px;height:34px;border-radius:7px;border:1px solid var(--line);background:var(--surface);font-weight:600;cursor:pointer}
+.cell.P{background:var(--goodbg);color:var(--good);border-color:var(--good)}
+.cell.A{background:var(--badbg);color:var(--bad);border-color:var(--bad)}
+.cell.L{background:var(--warnbg);color:var(--warn);border-color:var(--warn)}
+.tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:.8rem;font-weight:500;margin:1px 2px;background:var(--badbg);color:var(--bad)}
+.tag.w{background:var(--warnbg);color:var(--warn)}
+.tag.g{background:var(--goodbg);color:var(--good)}
+.muted{color:var(--muted)}
+.empty{padding:28px 16px;text-align:center;color:var(--muted)}
+.hint{color:var(--muted);font-size:.9rem;margin:0 0 10px}
+a{color:var(--blue)}
+.subtabs{display:flex;gap:6px;overflow-x:auto;margin:6px 0 14px}
+.subtabs button{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--text);padding:6px 12px;border-radius:999px;font:500 .85rem Outfit,sans-serif;cursor:pointer}
+.subtabs button[aria-selected="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+footer{max-width:1100px;margin:0 auto;padding:0 16px 24px;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+<div class="strip">Tool kits are due by the end of week 1</div>
+<div class="band"><header>
+  <p class="brand">School of Barbers</p>
+  <h1>Student <em>tracker.</em></h1>
+  <p class="sub" id="sub"></p>
+</header></div>
+<nav id="tabs" role="tablist"></nav>
+<main id="main"></main>
+<footer>Your class list is saved in this browser only, so it stays private to you. Use Setup &gt; Show as CSV to share a summary with your Student Success Manager.</footer>
+<script>
+(function(){
+var KEY="barber-tracker-v1";
+var REQ=[["clipper","Clipper and guards"],["trimmer","Trimmer"],["comb","Cutting comb"],["clips","Sectioning clips"],["scissors","Shears and thinning shears"],["spray","Spray bottle"],["brush","Fade brush"],["mannequin","Mannequin head and stand"]];
+var OPT=[["foil","Foil shaver"]];
+var STORE="https://store.schoolofbarbers.com.au/student?code=students-nd3bcbfftp";
+var TABS=[["overview","Overview"],["attendance","Attendance"],["toolkit","Toolkit"],["reg","Registration"],["setup","Setup"]];
+var S=load(),tab="overview",flt="all",csv="",cur="all",pend="";
+function load(){try{var r=localStorage.getItem(KEY);if(r){var o=JSON.parse(r);if(o&&o.students)return migrate(o)}}catch(e){}return{classes:[],students:[],cd:{}}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function esc(t){return String(t==null?"":t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function uid(){return "s"+Math.random().toString(36).slice(2,9)}
+function today(){var d=new Date();return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2)}
+function fmt(d){var p=d.split("-");return new Date(+p[0],+p[1]-1,+p[2]).toLocaleDateString("en-AU",{day:"numeric",month:"short"})}
+function kitCount(s){return REQ.filter(function(k){return s.kit&&s.kit[k[0]]}).length}
+function rate(s){var m=0,a=0;Object.keys(s.att||{}).forEach(function(d){var v=s.att[d];if(v){m++;if(v!=="A")a++}});return m?Math.round(a/m*100):null}
+function pct(n,t){return t?Math.round(n/t*100):0}
+function stud(id){return S.students.filter(function(s){return s.id===id})[0]}
+function migrate(o){if(!o.classes){var c={id:"c"+uid(),name:o.cls||"Class 1"};o.classes=o.students.length?[c]:[];o.students.forEach(function(s){s.classId=c.id})}if(!o.cd){o.cd={};o.classes.forEach(function(c){o.cd[c.id]=(o.dates||[]).slice()})}return o}
+function cname(id){var c=S.classes.filter(function(x){return x.id===id})[0];return c?c.name:""}
+function vis(){return cur==="all"?S.students:S.students.filter(function(s){return s.classId===cur})}
+function tg(){return cur==="all"?S.classes.map(function(c){return c.id}):[cur]}
+function alld(){var u={};S.classes.forEach(function(c){(S.cd[c.id]||[]).forEach(function(d){u[d]=1})});return Object.keys(u).sort()}
+function dts(){return cur==="all"?alld():(S.cd[cur]||[])}
+function has(s,d){return (S.cd[s.classId]||[]).indexOf(d)>-1}
+function ask(k){if(pend===k){pend="";return true}pend=k;render();return false}
+function bar(){return '<div class="row"><label for="clsel">Class</label><select id="clsel" data-a="clssel">'+[{id:"all",name:"All classes"}].concat(S.classes).map(function(c){var n=c.id==="all"?S.students.length:S.students.filter(function(s){return s.classId===c.id}).length;return '<option value="'+c.id+'"'+(cur===c.id?" selected":"")+'>'+esc(c.name)+' ('+n+')</option>'}).join("")+'</select></div>'}
+
+function render(){
+  var sc=[];document.querySelectorAll(".wrap").forEach(function(w){sc.push(w.scrollLeft)});
+  document.getElementById("sub").textContent=(cur==="all"?"All classes":cname(cur))+" · "+vis().length+" student"+(vis().length===1?"":"s");
+  document.getElementById("tabs").innerHTML=TABS.map(function(t){return '<button role="tab" data-a="tab" data-t="'+t[0]+'" aria-selected="'+(tab===t[0])+'">'+t[1]+'</button>'}).join("");
+  var h="";
+  if(!S.students.length&&tab!=="setup"){h='<div class="panel empty">No students yet. Open <b>Setup</b>, create a class, then add your students.<br><br><button class="btn pri" data-a="tab" data-t="setup">Go to Setup</button></div>'}
+  else if(tab!=="setup"&&!vis().length)h=bar()+'<div class="panel empty">No students in this class yet. Add some in <b>Setup</b>.</div>';
+  else if(tab==="overview")h=vOverview();
+  else if(tab==="attendance")h=vAttendance();
+  else if(tab==="toolkit")h=vToolkit();
+  else if(tab==="reg")h=vReg();
+  else h=vSetup();
+  if(tab!=="setup"&&S.students.length&&vis().length)h=bar()+h;
+  document.getElementById("main").innerHTML=h;
+  document.querySelectorAll(".wrap").forEach(function(w,i){if(sc[i])w.scrollLeft=sc[i]});
+}
+
+function vOverview(){
+  var V=vis(),n=V.length,reg=V.filter(function(s){return s.reg}).length;
+  var full=V.filter(function(s){return kitCount(s)===REQ.length}).length;
+  var shown=V.filter(function(s){return s.shown}).length;
+  var rs=V.map(rate).filter(function(r){return r!==null});
+  var avg=rs.length?Math.round(rs.reduce(function(a,b){return a+b},0)/rs.length):null;
+  function card(v,l,p){return '<div class="stat"><b>'+v+'</b><span>'+l+'</span>'+(p==null?"":'<div class="bar"><i style="width:'+p+'%"></i></div>')+'</div>'}
+  var h='<div class="stats">'+card(reg+"/"+n,"Registered",pct(reg,n))+card(full+"/"+n,"Full required kit",pct(full,n))+card(shown+"/"+n,"Kit shown at week-1 check-in",pct(shown,n))+card(avg==null?"–":avg+"%","Average attendance",avg)+'</div>';
+  h+='<div class="row"><label for="flt">Show</label><select id="flt" data-a="flt">'+[["all","Everyone"],["noreg","Not registered"],["nokit","Kit incomplete"],["noshow","Kit not shown yet"],["low","Attendance below 80%"]].map(function(o){return '<option value="'+o[0]+'"'+(flt===o[0]?" selected":"")+'>'+o[1]+'</option>'}).join("")+'</select></div>';
+  var rows=V.filter(function(s){var r=rate(s);return flt==="all"||(flt==="noreg"&&!s.reg)||(flt==="nokit"&&kitCount(s)<REQ.length)||(flt==="noshow"&&!s.shown)||(flt==="low"&&r!==null&&r<80)});
+  if(!rows.length)return h+'<div class="panel empty">Nobody matches this filter.</div>';
+  h+='<div class="wrap"><table><tr><th>Student</th>'+(cur==="all"?'<th>Class</th>':"")+'<th>Registered</th><th>Kit</th><th>Attendance</th><th>Needs attention</th></tr>';
+  rows.forEach(function(s){
+    var k=kitCount(s),r=rate(s),f="";
+    
+    if(!s.reg)f+='<span class="tag">Not registered</span>';
+    if(k<REQ.length)f+='<span class="tag w">Kit '+k+'/'+REQ.length+'</span>';
+    else if(!s.shown)f+='<span class="tag w">Kit not shown</span>';
+    if(r!==null&&r<80)f+='<span class="tag">Low attendance</span>';
+    if(!f)f='<span class="tag g">All good</span>';
+    h+='<tr><td>'+esc(s.name)+'</td>'+(cur==="all"?'<td>'+esc(cname(s.classId))+'</td>':"")+'<td>'+(s.reg?"Yes":"No")+'</td><td>'+k+'/'+REQ.length+'</td><td>'+(r==null?"–":r+"%")+'</td><td style="text-align:left">'+f+'</td></tr>';
+  });
+  return h+'</table></div>';
+}
+
+function vAttendance(){
+  var h='<div class="row"><label for="nd">Session date</label><input type="date" id="nd" value="'+today()+'"><button class="btn pri" data-a="adddate">Add session</button><span class="muted">'+(cur==="all"?"Applies to every class.":"This class only.")+'</span></div><p class="hint">Tap a box to cycle: P present, A absent, L late, blank for not marked.</p>';
+  var D=dts();if(!D.length)return h+'<div class="panel empty">Add your first session date above.</div>';
+  h+='<div class="wrap"><table><tr><th>Student</th>'+D.map(function(d){return '<th>'+fmt(d)+'<br><button class="btn sm" data-a="allp" data-d="'+d+'">All P</button> <button class="btn sm'+(pend==="deldate:"+d?" danger":"")+'" data-a="deldate" data-d="'+d+'" aria-label="Remove session '+fmt(d)+'">'+(pend==="deldate:"+d?"Remove?":"×")+'</button></th>'}).join("")+'<th>Rate</th></tr>';
+  vis().forEach(function(s){
+    var r=rate(s);
+    h+='<tr><td>'+esc(s.name)+'</td>'+D.map(function(d){if(!has(s,d))return '<td class="muted">–</td>';var v=(s.att&&s.att[d])||"";return '<td><button class="cell '+v+'" data-a="att" data-id="'+s.id+'" data-d="'+d+'" aria-label="'+esc(s.name)+' '+fmt(d)+' '+(v||"not marked")+'">'+v+'</button></td>'}).join("")+'<td>'+(r==null?"–":r+"%")+'</td></tr>';
+  });
+  return h+'</table></div>';
+}
+
+function vToolkit(){
+  var all=REQ.concat(OPT);
+  var h='<div class="panel"><h2>Required by the end of week 1</h2><p class="hint">Tick each tool once the student has it. Kits can be bought with the student discount at <a href="'+STORE+'" target="_blank" rel="noopener">School of Barbers</a>. Students show their kit to their Student Success Manager at the week-1 check-in.</p></div>';
+  h+='<div class="wrap"><table><tr><th>Student</th>'+all.map(function(k){return '<th>'+k[1]+(OPT.indexOf(k)>-1?'<br><span class="muted">optional</span>':"")+'</th>'}).join("")+'<th>Required</th><th>Shown at check-in</th></tr>';
+  vis().forEach(function(s){
+    var c=kitCount(s);
+    h+='<tr><td>'+esc(s.name)+'</td>'+all.map(function(k){return '<td><input type="checkbox" data-a="kit" data-id="'+s.id+'" data-k="'+k[0]+'"'+(s.kit&&s.kit[k[0]]?" checked":"")+' aria-label="'+esc(s.name)+': '+k[1]+'"></td>'}).join("")+'<td><span class="tag '+(c===REQ.length?"g":"w")+'">'+c+'/'+REQ.length+'</span></td><td><input type="checkbox" data-a="shown" data-id="'+s.id+'"'+(s.shown?" checked":"")+' aria-label="'+esc(s.name)+': kit shown"></td></tr>';
+  });
+  return h+'</table></div>';
+}
+
+function vReg(){
+  var h='<div class="panel"><h2>Registration</h2><p class="hint">Tick each student once their registration is confirmed. This is a manual record and is not connected to any website.</p></div>';
+  h+='<div class="wrap"><table><tr><th>Student</th><th>Registered</th></tr>';
+  vis().forEach(function(s){h+='<tr><td>'+esc(s.name)+'</td><td><input type="checkbox" data-a="reg" data-id="'+s.id+'"'+(s.reg?" checked":"")+' aria-label="'+esc(s.name)+': registered"></td></tr>'});
+  return h+'</table></div>';
+}
+
+function vSetup(){
+  var h='<div class="panel"><h2>Classes</h2><p class="hint">Create a class for each group. Use the class tabs on the other pages to switch between them.</p><div class="row"><input type="text" id="newcls" placeholder="e.g. Monday group"><button class="btn pri" data-a="addcls">Add class</button></div>'+S.classes.map(function(c){var n=S.students.filter(function(s){return s.classId===c.id}).length;return '<div class="row" style="margin-bottom:4px"><input type="text" data-a="rncls" data-id="'+c.id+'" value="'+esc(c.name)+'" aria-label="Class name" style="flex:1"><span class="muted">'+n+' student'+(n===1?"":"s")+'</span><button class="btn sm'+(pend==="rmcls:"+c.id?" danger":"")+'" data-a="rmcls" data-id="'+c.id+'">'+(pend==="rmcls:"+c.id?"Confirm":"Remove")+'</button></div>'}).join("")+'</div>';
+  if(S.classes.length)h+='<div class="panel"><h2>Add students</h2><div class="row"><label for="addto">Class</label><select id="addto">'+S.classes.map(function(c){return '<option value="'+c.id+'"'+(c.id===cur?" selected":"")+'>'+esc(c.name)+'</option>'}).join("")+'</select></div><p class="hint">One student name per line.</p><textarea id="paste" placeholder="Jordan Smith&#10;Alex Nguyen"></textarea><div class="row" style="margin-top:8px"><button class="btn pri" data-a="addstud">Add students</button></div></div>';
+  if(S.students.length){
+    h+='<div class="panel"><h2>Students</h2>'+S.students.map(function(s){return '<div class="row" style="margin-bottom:4px"><span style="flex:1">'+esc(s.name)+'</span><select data-a="mv" data-id="'+s.id+'" aria-label="Class for '+esc(s.name)+'">'+S.classes.map(function(c){return '<option value="'+c.id+'"'+(c.id===s.classId?" selected":"")+'>'+esc(c.name)+'</option>'}).join("")+'</select><button class="btn sm'+(pend==="rm:"+s.id?" danger":"")+'" data-a="rm" data-id="'+s.id+'">'+(pend==="rm:"+s.id?"Confirm":"Remove")+'</button></div>'}).join("")+'</div>';
+    h+='<div class="panel"><h2>Share a summary</h2><div class="row"><button class="btn" data-a="csv">Show as CSV</button><button class="btn'+(pend==="reset:"?" danger":"")+'" data-a="reset">'+(pend==="reset:"?"Confirm clear":"Clear everything")+'</button></div>'+(csv?'<p class="hint">Select all, copy, and paste into an email or spreadsheet.</p><textarea id="csvout" readonly>'+esc(csv)+'</textarea>':"")+'</div>';
+  }
+  return h;
+}
+
+function toCsv(){
+  var q=function(v){v=String(v==null?"":v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v};
+  var head=["Name","Class","Registered"].concat(REQ.concat(OPT).map(function(k){return k[1]}),["Kit shown at check-in","Attendance %"],alld());
+  var rows=S.students.map(function(s){
+    return [s.name,cname(s.classId),s.reg?"Yes":"No"].concat(REQ.concat(OPT).map(function(k){return s.kit&&s.kit[k[0]]?"Yes":"No"}),[s.shown?"Yes":"No",rate(s)==null?"":rate(s)],alld().map(function(d){return (s.att&&s.att[d])||""})).map(q).join(",");
+  });
+  return [head.map(q).join(",")].concat(rows).join("\n");
+}
+
+document.addEventListener("click",function(e){
+  var el=e.target.closest("[data-a]");if(!el)return;
+  var a=el.dataset.a,s=el.dataset.id?stud(el.dataset.id):null,d=el.dataset.d;
+  var key=a+":"+(el.dataset.id||el.dataset.d||"");if(pend&&pend!==key)pend="";
+  if(a==="tab"){tab=el.dataset.t}
+  else if(a==="cls"){cur=el.dataset.c}
+  else if(a==="addcls"){var nm=document.getElementById("newcls").value.trim();if(!nm)return;var nc={id:"c"+uid(),name:nm};S.classes.push(nc);S.cd[nc.id]=[]}
+  else if(a==="rmcls"){var rid=el.dataset.id;if(!ask(key))return;S.classes=S.classes.filter(function(c){return c.id!==rid});S.students=S.students.filter(function(x){return x.classId!==rid});delete S.cd[rid];if(cur===rid)cur="all"}
+  else if(a==="att"&&s){s.att=s.att||{};var o=["","P","A","L"],v=s.att[d]||"";var nx=o[(o.indexOf(v)+1)%4];if(nx)s.att[d]=nx;else delete s.att[d]}
+  else if(a==="allp"){vis().forEach(function(x){if(!has(x,d))return;x.att=x.att||{};x.att[d]="P"})}
+  else if(a==="deldate"){if(!ask(key))return;tg().forEach(function(c){S.cd[c]=(S.cd[c]||[]).filter(function(x){return x!==d})});S.students.forEach(function(x){if(x.att&&tg().indexOf(x.classId)>-1)delete x.att[d]})}
+  else if(a==="adddate"){var v2=document.getElementById("nd").value;if(!v2)return;tg().forEach(function(c){var L=S.cd[c]=S.cd[c]||[];if(L.indexOf(v2)<0){L.push(v2);L.sort()}})}
+  else if(a==="addstud"){
+    var cid=document.getElementById("addto").value,lines=document.getElementById("paste").value.split("\n");
+    lines.forEach(function(l){l=l.trim();if(!l)return;S.students.push({id:uid(),name:l,classId:cid,shown:false,kit:{},att:{}})});
+  }
+  else if(a==="rm"&&s){if(!ask(key))return;S.students=S.students.filter(function(x){return x.id!==s.id})}
+  else if(a==="csv"){csv=toCsv()}
+  else if(a==="reset"){if(!ask(key))return;S={classes:[],students:[],cd:{}};cur="all";csv=""}
+  else return;
+  save();render();
+});
+document.addEventListener("change",function(e){
+  var el=e.target.closest("[data-a]");if(!el)return;
+  var a=el.dataset.a,s=el.dataset.id?stud(el.dataset.id):null;
+  if(a==="kit"&&s){s.kit=s.kit||{};s.kit[el.dataset.k]=el.checked}
+  else if(a==="shown"&&s){s.shown=el.checked}
+  else if(a==="reg"&&s){s.reg=el.checked}
+  else if(a==="mv"&&s){s.classId=el.value}
+  else if(a==="clssel"){cur=el.value}
+  else if(a==="rncls"){var rc=S.classes.filter(function(c){return c.id===el.dataset.id})[0];if(rc&&el.value.trim())rc.name=el.value.trim()}
+  else if(a==="flt"){flt=el.value;render();return}
+  else return;
+  save();render();
+});
+render();
+})();
+</script>
+</body>
+</html>
